@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="container d-flex flex-column justify-content-center align-items-center" style="height:100vh; width:100vw">
+     <a class="btn btn-sm btn-success" href="/addplace">Register City</a>
+        <div class="card p-3" style="width:30rem;">
+        <form class="form-control d-flex flex-column border-none" action="/">
+          <input class="form-control" name="country" type="text" class="ghost-input" placeholder="Enter a Country" required>
+          <input class="form-control" name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+          <input type="submit" class="ghost-button" value="Get Weather">
+        </div> 
+        </form>
+        <div class="container">
+            <p>Location Name : <%= parseData.location.name %></p>
+            <p>Lattitude :<%= parseData.location.lat %></p>
+            <p>Longitude :<%= parseData.location.long %></p>
+            <p>TimeZone :<%= parseData.location.timezone %></p>
+            <p>Temperature :<%= parseData.current.temperature %></p>
+            <p>Date :<%= parseData.current.date %></p>
+            <p>Humidity :<%= parseData.current.humidity %></p>
+            <p>Wind Display :<%= parseData.current.winddisplay %></p>
+            <p>Day :<%= parseData.current.day %></p>
+            <p>Wind Speed:<%= parseData.current.windspeed %></p>
+            
+            <img src="<%= parseData.current.imageUrl %>" alt="">
+
+        </div>
+        
+       
+    </div>
+   
+    
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+    axios.get('/').then(function(aa){
+        console.log(aa.data.location.name);
+    }).catch((err)=>{
+        console.log(err);
+    })
+</script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
